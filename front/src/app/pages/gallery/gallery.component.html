@@ -16,8 +16,8 @@
   mode="indeterminate"
 ></mat-progress-spinner>
 
-<ng-template #picturesArea>
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+<ng-template #picturesArea >
+  <div fxLayout="row wrap" fxLayoutGap="16px grid" >
     <div
       fxFlex.xs="100%"
       fxFlex.sm="50%"
@@ -25,7 +25,7 @@
       fxFlex="25%"
       *ngFor="let picture of pictures | async"
     >
-      <mat-card>
+      <mat-card (click)="openDialog($event)" [id]="picture.id">
         <img
           [src]="picture.image | image"
           [alt]="'Photo of ' + picture.title"

@@ -33,6 +33,8 @@ import { CenteredCardComponent } from './ui/centered-card/centered-card.componen
 import { FileInputComponent } from './ui/file-input/file-input.component';
 import { ImagePipe } from './pipes/image.pipe';
 import { NewPictureComponent } from './pages/new-picture/new-picture.component';
+import { ModalComponent } from './pages/gallery/modal/modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -55,7 +57,8 @@ const socialConfig: SocialAuthServiceConfig = {
     CenteredCardComponent,
     FileInputComponent,
     ImagePipe,
-    NewPictureComponent
+    NewPictureComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ const socialConfig: SocialAuthServiceConfig = {
     MatSnackBarModule,
     MatMenuModule,
     MatSelectModule,
+    MatDialogModule,
     AppStoreModule,
     SocialLoginModule,
     ReactiveFormsModule,

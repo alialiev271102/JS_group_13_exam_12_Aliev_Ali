@@ -1,0 +1,16 @@
+<mat-progress-spinner
+  *ngIf="(loading | async) else pictureArea"
+  mode="indeterminate"
+></mat-progress-spinner>
+
+<ng-template #pictureArea>
+  <mat-card>
+    <img
+      [src]="data.image | image"
+      [alt]="'Photo of ' + data.title"
+      mat-card-image
+    />
+    <mat-card-title>{{ data.title }}</mat-card-title>
+    <p>Posted by :<a href="#">{{ data.userName }}</a></p>
+  </mat-card>
+</ng-template>
