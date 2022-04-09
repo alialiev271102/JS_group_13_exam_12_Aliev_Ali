@@ -31,6 +31,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { UserTypeDirective } from './directives/user-type.directive';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
 import { FileInputComponent } from './ui/file-input/file-input.component';
+import { ImagePipe } from './pipes/image.pipe';
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -51,7 +52,8 @@ const socialConfig: SocialAuthServiceConfig = {
     RegisterComponent,
     UserTypeDirective,
     CenteredCardComponent,
-    FileInputComponent
+    FileInputComponent,
+    ImagePipe
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { EffectsModule } from '@ngrx/effects';
 import {usersReducer} from "./store/users.reducer";
 import {UsersEffects} from "./store/users.effects";
+import {pictureReducer} from "./store/picture.reducer";
+import {PictureEffects} from "./store/picture.effects";
 
 const localStorageSyncReducer = (reducer: ActionReducer<any>) => {
   return localStorageSync({
@@ -16,9 +18,10 @@ const metaReducers: MetaReducer[] = [localStorageSyncReducer];
 
 const reducers = {
   users: usersReducer,
+  pictures: pictureReducer,
 };
 
-const effects = [UsersEffects];
+const effects = [UsersEffects, PictureEffects];
 
 @NgModule({
   imports: [

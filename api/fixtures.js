@@ -27,14 +27,17 @@ const run = async () => {
 
     await Picture.create({
         creatorUserId: await User.findOne({email: 'limon@gmail.com'}),
+        userName: 'limon',
         title: 'car',
         image: 'car.jpg'
     },{
         creatorUserId: await User.findOne({email: 'limon@gmail.com'}),
+        userName: 'limon',
         title: 'computer',
         image: 'computer.jpeg'
     },{
         creatorUserId: await User.findOne({email: 'user@gmail.com'}),
+        userName: 'Not limon',
         title: 'telephone',
         image: 'telephone.jpg'
     },)

@@ -7,7 +7,6 @@ const config = require('../config');
 const Picture = require("../models/Picture");
 const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
-const User = require("../models/User");
 
 
 const router = express.Router();
@@ -78,12 +77,15 @@ router.post('/', auth, upload.single('image'), async (req, res, next) => {
 
         const pictureData = {
             creatorUserId: req.body.creatorUserId,
+            userName: req.body.displayName,
             title: req.body.title,
             image: null,
         };
 
         if (req.file) {
             pictureData.image = req.file.filename;
+        } else {
+            return res.status(400).send({message: 'image file are required'});
         }
         const picture = new Picture(pictureData);
         await picture.save();

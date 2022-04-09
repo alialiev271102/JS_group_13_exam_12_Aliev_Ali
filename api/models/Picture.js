@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
-
-const ingredient = {
-    name: String,
-    amount: Number,
-}
-
-const CocktailSchema = new Schema({
+const PictureSchema = new Schema({
     creatorUserId: {
+        type: String,
+        required: true,
+    },
+    userName: {
         type: String,
         required: true,
     },
@@ -19,10 +16,9 @@ const CocktailSchema = new Schema({
     },
     image: {
         type: String,
-        required: true
     },
 });
 
-const Cocktail = mongoose.model('Cocktail', CocktailSchema);
+const Picture = mongoose.model('Picture', PictureSchema);
 
-module.exports = Cocktail;
+module.exports = Picture;
