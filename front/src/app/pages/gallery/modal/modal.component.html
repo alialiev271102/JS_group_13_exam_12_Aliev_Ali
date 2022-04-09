@@ -12,5 +12,12 @@
     />
     <mat-card-title>{{ data.title }}</mat-card-title>
     <p>Posted by :<a href="#">{{ data.userName }}</a></p>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <a
+        mat-button
+        (click)="onNoClick()"
+      >CLOSE</a>
+    </mat-card-actions>
   </mat-card>
 </ng-template>

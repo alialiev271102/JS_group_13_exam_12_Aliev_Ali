@@ -34,13 +34,12 @@ export class GalleryComponent implements OnInit {
     const id = event.currentTarget.id;
     this.pictures.subscribe(pic => {
       pic.forEach((pic) => {
-        if(id === pic.id) {
+        if (id === pic.id) {
           this.dialogPic = pic;
         }
       })
 
     })
-    console.log(this.dialogPic);
     this.dialog.open(ModalComponent, {
       data: {
         id: this.dialogPic.id,

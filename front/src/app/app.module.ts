@@ -35,6 +35,7 @@ import { ImagePipe } from './pipes/image.pipe';
 import { NewPictureComponent } from './pages/new-picture/new-picture.component';
 import { ModalComponent } from './pages/gallery/modal/modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { MyGalleryComponent } from './pages/my-gallery/my-gallery.component';
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -58,7 +59,8 @@ const socialConfig: SocialAuthServiceConfig = {
     FileInputComponent,
     ImagePipe,
     NewPictureComponent,
-    ModalComponent
+    ModalComponent,
+    MyGalleryComponent
   ],
   imports: [
     BrowserModule,
