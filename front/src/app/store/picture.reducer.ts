@@ -5,7 +5,7 @@ import {
   createPictureRequest,
   createPictureSuccess,
   fetchPictureFailure,
-  fetchPictureRequest, fetchPictureSuccess
+  fetchPictureRequest, fetchPictureSuccess, fetchSomePictureFailure, fetchSomePictureRequest, fetchSomePictureSuccess
 } from "./picture.actions";
 
 
@@ -26,6 +26,17 @@ export const pictureReducer = createReducer(
     picture
   })),
   on(fetchPictureFailure, (state, {error}) => ({
+    ...state,
+    fetchLoading: false,
+    fetchError: error
+  })),
+  on(fetchSomePictureRequest, state => ({...state, fetchLoading: true})),
+  on(fetchSomePictureSuccess, (state, {picture}) => ({
+    ...state,
+    fetchLoading: false,
+    picture
+  })),
+  on(fetchSomePictureFailure, (state, {error}) => ({
     ...state,
     fetchLoading: false,
     fetchError: error

@@ -28,6 +28,21 @@ export class PicturesService {
       })
     );
   }
+  getSomePictures(id: string) {
+    return this.http.get<ApiPictureData[]>(environment.apiUrl + '/pictures/myGallery/' + id).pipe(
+      map(response => {
+        return response.map(pictureData => {
+          return new Picture(
+            pictureData._id,
+            pictureData.creatorUserId,
+            pictureData.userName,
+            pictureData.title,
+            pictureData.image,
+          );
+        });
+      })
+    );
+  }
 
 
   createPicture(pictureData: PictureData) {

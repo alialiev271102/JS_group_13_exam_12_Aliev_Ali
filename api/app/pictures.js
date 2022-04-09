@@ -54,14 +54,14 @@ router.get('/myGallery/:id', async (req, res, next) => {
 
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/myGallery/:id', async (req, res, next) => {
     try {
-        const picture = await Picture.findById(req.params.id);
+        const picture = await Picture.find({creatorUserId: req.params.id});
 
         if (!picture) {
             return res.status(404).send({message: 'Not found'});
         }
-
+        console.log(picture)
         return res.send(picture);
     } catch (e) {
         next(e);

@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   }
 
-  googleLogin() {
-    void this.auth.signIn(GoogleLoginProvider.PROVIDER_ID);
-    void this.router.navigate(['/']);
+  async googleLogin() {
+    await this.auth.signIn(GoogleLoginProvider.PROVIDER_ID);
+    await this.router.navigate(['/']);
   }
 
   ngOnDestroy() {

@@ -10,6 +10,18 @@ export const fetchPictureFailure = createAction(
   '[Picture] Fetch Failure',
   props<{error: string}>()
 );
+export const fetchSomePictureRequest = createAction(
+  '[Picture] Fetch Some Request',
+  props<{id: string}>()
+);
+export const fetchSomePictureSuccess = createAction(
+  '[Picture] Fetch Some Success',
+  props<{picture: Picture[]}>()
+);
+export const fetchSomePictureFailure = createAction(
+  '[Picture] Fetch Some Failure',
+  props<{error: string}>()
+);
 
 export const createPictureRequest = createAction(
   '[Picture] Create Request',

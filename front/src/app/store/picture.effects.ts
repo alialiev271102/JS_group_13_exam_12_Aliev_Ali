@@ -8,7 +8,7 @@ import {
   createPictureSuccess,
   fetchPictureFailure,
   fetchPictureRequest,
-  fetchPictureSuccess
+  fetchPictureSuccess, fetchSomePictureFailure, fetchSomePictureRequest, fetchSomePictureSuccess
 } from "./picture.actions";
 import {PicturesService} from "../services/pictures.service";
 
@@ -20,6 +20,16 @@ export class PictureEffects {
     mergeMap(() => this.pictureService.getPictures().pipe(
       map(picture => fetchPictureSuccess({picture})),
       catchError(() => of(fetchPictureFailure({
+        error: 'Something went wrong'
+      })))
+    ))
+  ));
+
+  fetchSomePictures = createEffect(() => this.actions.pipe(
+    ofType(fetchSomePictureRequest),
+    mergeMap(({id}) => this.pictureService.getSomePictures(id).pipe(
+      map(picture => fetchSomePictureSuccess({picture})),
+      catchError(() => of(fetchSomePictureFailure({
         error: 'Something went wrong'
       })))
     ))

@@ -3,12 +3,12 @@ import {Observable, Subscription} from "rxjs";
 import {Picture} from "../../models/picture.model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/types";
-import {fetchPictureRequest} from "../../store/picture.actions";
+import {fetchPictureRequest, fetchSomePictureRequest} from "../../store/picture.actions";
 import {ModalComponent} from "../gallery/modal/modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {User} from "../../models/user.model";
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {environment} from "../../../environments/environment";
 
 @Component({
@@ -25,14 +25,17 @@ export class MyGalleryComponent implements OnInit, OnDestroy {
   dialogPic!: Picture;
   user!: Observable<null | User>;
   deleteSub!: Subscription;
-  flag!: boolean
+  flag!: boolean;
+  sub!: Subscription;
+  id!: string;
 
 
   constructor(
     private store: Store<AppState>,
     private dialog: MatDialog,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.user = store.select(state => state.users.user);
     this.pictures = this.store.select(state => state.pictures.picture)
@@ -42,7 +45,11 @@ export class MyGalleryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(fetchPictureRequest());
+    this.route.params.subscribe(params => {
+      this.id = params['id']
+    })
+    const id = this.id;
+    this.store.dispatch(fetchSomePictureRequest({id}));
   }
 
   openDialog(event: any) {
@@ -74,7 +81,7 @@ export class MyGalleryComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.flag === true) this.deleteSub.unsubscribe();
+    if (this.flag) this.deleteSub.unsubscribe();
   }
 
 }

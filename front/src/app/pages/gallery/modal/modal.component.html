@@ -11,7 +11,7 @@
       mat-card-image
     />
     <mat-card-title>{{ data.title }}</mat-card-title>
-    <p>Posted by :<a href="#">{{ data.userName }}</a></p>
+    <p>Posted by :<a [routerLink]="'/pictures/myGallery/' + data.creatorUserId" (click)="onNoClick()">{{ data.userName }}</a></p>
     <mat-divider></mat-divider>
     <mat-card-actions>
       <a
