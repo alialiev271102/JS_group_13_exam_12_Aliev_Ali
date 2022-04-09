@@ -1,9 +1,10 @@
 <div fxLayout="row" fxLayoutAlign="space-between flex-start">
   <h1>Cocktails</h1>
   <a
-    routerLink="/cocktail/new"
+    routerLink="/picture/new"
     mat-button
-  >NEW COCKTAIL</a>
+    *appUserType="'user'"
+  >NEW PICTURE</a>
 </div>
 
 <div class="error" *ngIf="error | async">

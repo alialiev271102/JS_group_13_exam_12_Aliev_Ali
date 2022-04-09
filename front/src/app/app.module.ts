@@ -24,7 +24,7 @@ import {environment} from "../environments/environment";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./auth.interceptor";
 import { GalleryComponent } from './pages/gallery/gallery.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -32,6 +32,7 @@ import { UserTypeDirective } from './directives/user-type.directive';
 import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
 import { FileInputComponent } from './ui/file-input/file-input.component';
 import { ImagePipe } from './pipes/image.pipe';
+import { NewPictureComponent } from './pages/new-picture/new-picture.component';
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -53,7 +54,8 @@ const socialConfig: SocialAuthServiceConfig = {
     UserTypeDirective,
     CenteredCardComponent,
     FileInputComponent,
-    ImagePipe
+    ImagePipe,
+    NewPictureComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,7 @@ const socialConfig: SocialAuthServiceConfig = {
     MatSelectModule,
     AppStoreModule,
     SocialLoginModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

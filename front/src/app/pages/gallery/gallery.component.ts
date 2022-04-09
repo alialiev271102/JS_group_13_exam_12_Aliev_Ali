@@ -4,6 +4,7 @@ import {Picture} from "../../models/picture.model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/types";
 import {fetchPictureRequest} from "../../store/picture.actions";
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-gallery',

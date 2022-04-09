@@ -77,7 +77,7 @@ router.post('/', auth, upload.single('image'), async (req, res, next) => {
 
         const pictureData = {
             creatorUserId: req.body.creatorUserId,
-            userName: req.body.displayName,
+            userName: req.body.userName,
             title: req.body.title,
             image: null,
         };

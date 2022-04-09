@@ -1,0 +1,27 @@
+<h1>New product</h1>
+<mat-card>
+  <mat-card-content>
+    <div class="error" *ngIf="error | async">
+      {{ error | async }}
+    </div>
+    <form (ngSubmit)="onSubmit()" #f="ngForm" fxLayout="column" [formGroup]="profileForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input name="title" formControlName="title" id="title" required matInput/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Image</mat-label>
+        <app-file-input name="image" formControlName="image" id="image"></app-file-input>
+      </mat-form-field>
+      <div>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="f.invalid || (loading | async)"
+        >SAVE
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
