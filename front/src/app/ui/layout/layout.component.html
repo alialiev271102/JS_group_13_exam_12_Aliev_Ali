@@ -20,10 +20,27 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <a routerLink="/">Gallery</a>
+      <a routerLink="/" class="title">Gallery</a>
+      <nav *appUserType="'user' else anonMenu">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item disabled>{{ (user | async)?.email }}</button>
+          <button mat-menu-item routerLink="/cocktail/myCocktails">My Cocktails</button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </nav>
     </mat-toolbar>
     <div class="content">
       <ng-content></ng-content>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-template #anonMenu>
+  <nav>
+    <a mat-button routerLink="/register">REGISTER</a>
+    <a mat-button routerLink="/login">SIGN IN</a>
+  </nav>
+</ng-template>

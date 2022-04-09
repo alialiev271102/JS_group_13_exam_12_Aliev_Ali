@@ -26,6 +26,11 @@ import {AuthInterceptor} from "./auth.interceptor";
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import {FormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { UserTypeDirective } from './directives/user-type.directive';
+import { CenteredCardComponent } from './ui/centered-card/centered-card.component';
+import { FileInputComponent } from './ui/file-input/file-input.component';
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -41,7 +46,12 @@ const socialConfig: SocialAuthServiceConfig = {
   declarations: [
     AppComponent,
     LayoutComponent,
-    GalleryComponent
+    GalleryComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserTypeDirective,
+    CenteredCardComponent,
+    FileInputComponent
   ],
   imports: [
     BrowserModule,
