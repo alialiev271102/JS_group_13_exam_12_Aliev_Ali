@@ -1,10 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="space-between flex-start">
   <h1>Cocktails</h1>
-  <a
-    routerLink="/picture/new"
-    mat-button
-    *appUserType="'user'"
-  >NEW PICTURE</a>
 </div>
 
 <div class="error" *ngIf="error | async">
@@ -25,14 +20,16 @@
       fxFlex="25%"
       *ngFor="let picture of pictures | async"
     >
-      <mat-card (click)="openDialog($event)" [id]="picture.id">
+      <mat-card>
         <img
           [src]="picture.image | image"
           [alt]="'Photo of ' + picture.title"
+          (click)="openDialog($event)"
+          [id]="picture.id"
           mat-card-image
         />
         <mat-card-title>{{ picture.title }}</mat-card-title>
-        <p>Posted by :<a href="#">{{ picture.userName }}</a></p>
+        <p>Posted by :<a [routerLink]="'/pictures/myGallery/' + picture.creatorUserId">{{ picture.userName }}</a></p>
 
       </mat-card>
     </div>

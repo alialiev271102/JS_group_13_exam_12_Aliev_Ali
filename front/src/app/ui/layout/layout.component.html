@@ -27,7 +27,7 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item disabled>{{ (user | async)?.email }}</button>
-          <button mat-menu-item routerLink="/cocktail/myCocktails">My Cocktails</button>
+          <button mat-menu-item [routerLink]="'/pictures/myGallery/' + (user | async)?._id">My Gallery</button>
           <button mat-menu-item (click)="logout()">Logout</button>
         </mat-menu>
       </nav>

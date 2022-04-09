@@ -36,6 +36,8 @@ import { NewPictureComponent } from './pages/new-picture/new-picture.component';
 import { ModalComponent } from './pages/gallery/modal/modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { MyGalleryComponent } from './pages/my-gallery/my-gallery.component';
+import { MyGalleryDirective } from './directives/my-gallery.directive';
+import { CreateGalleryDirective } from './directives/create-gallery.directive';
 
 const socialConfig: SocialAuthServiceConfig = {
   autoLogin: false,
@@ -55,12 +57,14 @@ const socialConfig: SocialAuthServiceConfig = {
     LoginComponent,
     RegisterComponent,
     UserTypeDirective,
+    MyGalleryDirective,
     CenteredCardComponent,
     FileInputComponent,
     ImagePipe,
     NewPictureComponent,
     ModalComponent,
-    MyGalleryComponent
+    MyGalleryComponent,
+    CreateGalleryDirective
   ],
   imports: [
     BrowserModule,

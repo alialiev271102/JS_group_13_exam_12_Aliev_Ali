@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'picture/new', component: NewPictureComponent},
-  {path: 'picture/myGallery', component: MyGalleryComponent},
+  {path: 'pictures/myGallery/:id', component: MyGalleryComponent},
 ];
 
 @NgModule({

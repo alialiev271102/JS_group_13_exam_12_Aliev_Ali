@@ -1,0 +1,51 @@
+<div fxLayout="row" fxLayoutAlign="space-between flex-start">
+  <a
+    routerLink="/picture/new"
+    mat-button
+    *appCreateGallery="(user | async)"
+  >NEW PICTURE</a>
+</div>
+
+<div class="error" *ngIf="error | async">
+  {{ error | async }}
+</div>
+
+<mat-progress-spinner
+  *ngIf="(loading | async) else picturesArea"
+  mode="indeterminate"
+></mat-progress-spinner>
+
+<ng-template #picturesArea>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      fxFlex.xs="100%"
+      fxFlex.sm="50%"
+      fxFlex.lt-lg="33%"
+      fxFlex="25%"
+      *ngFor="let picture of pictures | async"
+    >
+      <div *appMyGallery="picture">
+        <mat-card >
+          <img
+            [src]="picture.image | image"
+            [alt]="'Photo of ' + picture.title"
+            mat-card-image
+            (click)="openDialog($event)"
+            [id]="picture.id"
+          />
+          <mat-card-title>{{ picture.title }}</mat-card-title>
+          <p>Posted by :<a href="#">{{ picture.userName }}</a></p>
+          <button
+            mat-raised-button
+            *appCreateGallery="(user | async)"
+            (click)="deletePic($event)"
+            [id]="picture.id"
+          >
+            Delete
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

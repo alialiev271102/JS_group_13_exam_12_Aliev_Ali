@@ -82,7 +82,6 @@ router.post('/googleLogin', async (req, res, next) => {
     try {
         const accessToken = req.body.access_token;
         const response = await axios.get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + accessToken);
-        console.log(response.data);
         if (response.data.error) return res.status(401).send({message: 'Google token incorrect'});
         if (req.body.id !== response.data.id) return res.status(401).send({message: 'Wrong User ID'});
         let user = await User.findOne({googleId: req.body.id});

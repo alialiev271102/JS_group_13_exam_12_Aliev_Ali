@@ -43,10 +43,9 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/myGallery', async (req, res, next) => {
+router.get('/myGallery/:id', async (req, res, next) => {
     try {
-        const query = req.query.creatorUserId;
-        console.log(query);
+        const query = req.params.id;
         const picture = await Picture.find({creatorUserId: query});
         return res.send(picture);
     } catch (e) {
@@ -106,12 +105,22 @@ router.post('/', auth, upload.single('image'), async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
     try {
-        const id = req.params.id;
-        if (id) return res.send({message: 'No id'});
-        const picture = await Picture.findOne({_id: id});
-        if (picture) return res.send({message: 'Not found pic'})
+        const token = req.get('Authorization');
+        const message = {message: 'OK'};
 
-        picture.save();
+        if (!token) return res.send(message);
+
+        const user = await Picture.findOne({token});
+
+        if (!user) return res.send(message);
+
+        const picture = await Picture.deleteOne({_id: req.params.id});
+        if (!picture) {
+            return res.status(404).send({message: 'Not found'});
+        }
+
+
+        return res.send(message);
     } catch (e) {
         next(e);
     }
