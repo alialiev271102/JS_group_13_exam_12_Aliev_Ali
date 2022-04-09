@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const config = require("./config");
 const User = require("./models/User");
+const Picture = require("./models/Picture");
 const {nanoid} = require("nanoid");
 
 const run = async () => {
@@ -22,7 +23,21 @@ const run = async () => {
         email: 'limon@gmail.com',
         password: '12321',
         token: nanoid(),
-    })
+    });
+
+    await Picture.create({
+        creatorUserId: await User.findOne({email: 'limon@gmail.com'}),
+        title: 'car',
+        image: 'car.jpg'
+    },{
+        creatorUserId: await User.findOne({email: 'limon@gmail.com'}),
+        title: 'computer',
+        image: 'computer.jpeg'
+    },{
+        creatorUserId: await User.findOne({email: 'user@gmail.com'}),
+        title: 'telephone',
+        image: 'telephone.jpg'
+    },)
 
     await mongoose.connection.close();
 };
