@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authStateSub = this.auth.authState.subscribe((user: SocialUser) => {
+      console.log(user.name)
       this.http.post<User>(environment.apiUrl + '/users/googleLogin', {
         authToken: user.authToken,
         id: user.id,
@@ -47,7 +48,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       }).subscribe(user => {
         this.store.dispatch(loginUserSuccess({user}));
       });
-      console.log(user);
     });
 
   }

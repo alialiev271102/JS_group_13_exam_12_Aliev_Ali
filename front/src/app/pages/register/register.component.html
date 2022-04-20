@@ -23,6 +23,17 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
+      <mat-label>Display Name</mat-label>
+      <input
+        type="displayName" name="displayName" autocomplete="username"
+        required matInput ngModel #displayName="ngModel"
+      />
+      <mat-error *ngIf="displayName.touched && displayName.hasError('required')">
+        Display Name is required!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
       <input
         type="password" name="password" autocomplete="new-password"

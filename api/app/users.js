@@ -11,6 +11,7 @@ router.post('/', async (req, res, next) => {
     try {
         const user = new User({
             email: req.body.email,
+            displayName: req.body.displayName,
             password: req.body.password
         });
 
@@ -91,7 +92,7 @@ router.post('/googleLogin', async (req, res, next) => {
                 email: req.body.email,
                 password: nanoid(),
                 googleId: req.body.id,
-                displayName: req.body.name,
+                displayName: req.body.displayName,
             });
         }
 

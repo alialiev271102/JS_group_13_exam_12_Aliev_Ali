@@ -3,17 +3,18 @@ export interface User {
   displayName: string,
   email: string,
   token: string,
-  role: string,
   avatar: string,
 }
 
 export interface RegisterUserData {
   email: string,
+  displayName: string,
   password: string
 }
 
 export interface LoginUserData {
   email: string,
+  displayName: string,
   password: string,
 }
 
@@ -24,6 +25,7 @@ export interface FieldError {
 export interface RegisterError {
   errors: {
     password: FieldError,
+    displayName: FieldError,
     email: FieldError
   }
 }
